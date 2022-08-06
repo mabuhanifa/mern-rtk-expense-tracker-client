@@ -1,22 +1,6 @@
 import React from "react";
 import apiSlice from "../store/apiSlice";
-const obj = [
-  {
-    type: "Savings",
-    color: "#f9c74f",
-    percent: 45,
-  },
-  {
-    type: "Investment",
-    color: "#f9c74f",
-    percent: 20,
-  },
-  {
-    type: "Expense",
-    color: "rgb(54, 162, 235)",
-    percent: 10,
-  },
-];
+
 function LabelComponent({ data }) {
   return (
     <div className="labels flex justify-between">
@@ -32,16 +16,20 @@ function LabelComponent({ data }) {
   );
 }
 const Labels = () => {
-  const { data, isFetching , isSuccess, isError } = apiSlice.useGetLabelsQuery()
+  const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
   let Transactions;
-   console.log(data)
-  return (
-    <>
-      {obj.map((v, i) => (
-        <LabelComponent key={i} data={v}></LabelComponent>
-      ))}
-    </>
-  );
+
+  if (isFetching) {
+    Transactions = <div>Fetching</div>;
+  } else if (isSuccess) {
+    Transactions = data.map((v, i) => (
+      <LabelComponent key={i} data={v}></LabelComponent>
+    ));
+  } else if (isError) {
+    Transactions = <div>Error</div>;
+  }
+
+  return <>{Transactions}</>;
 };
 
 export default Labels;
