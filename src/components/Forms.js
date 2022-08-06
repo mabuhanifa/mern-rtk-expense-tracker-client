@@ -16,7 +16,7 @@ const Forms = () => {
             <input
               type="text"
               {...register("name")}
-              placeholder="Sallary, House Rend, SIP"
+              placeholder="Salary, House Rend, SIP"
               className="form-input"
             />
           </div>

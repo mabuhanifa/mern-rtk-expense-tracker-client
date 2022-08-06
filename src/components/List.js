@@ -3,14 +3,17 @@ import { VscTrash } from "react-icons/vsc";
 function Transaction({ category }) {
   if (!category) return null;
   return (
-    <div className="item flex justify-center bg-gray-50 py-2 rounded-r" style={{ borderRight : `8px solid ${category.color ??  "#e5e5e5"}`}}>
-            <button className='px-3'>
-              <span className='text-red-500 text-2xl'>
-              <VscTrash/>
-              </span>
-              </button>            
-            <span className='block w-full'>{category.name ?? ''}</span>
-        </div>
+    <div
+      className="item flex justify-center bg-gray-50 py-2 rounded-r"
+      style={{ borderRight: `8px solid ${category.color ?? "#e5e5e5"}` }}
+    >
+      <button className="px-3">
+        <span className="text-red-500 text-2xl">
+          <VscTrash />
+        </span>
+      </button>
+      <span className="block w-full">{category.name ?? ""}</span>
+    </div>
   );
 }
 const List = () => {
