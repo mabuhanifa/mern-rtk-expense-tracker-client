@@ -1,11 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import apiSlice from "../store/apiSlice";
 import List from "./List";
 
 const Forms = () => {
   const { register, handleSubmit, resetField } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const [addTransaction] = apiSlice.useAddTransactionMutation();
+  const onSubmit = async (data) => {
+    if (!data) return {};
+    await addTransaction(data).unwrap();
+    resetField("name");
+    resetField("amount");
   };
   return (
     <div className="form max-w-sm mx-auto w-96">
@@ -42,7 +47,7 @@ const Forms = () => {
           </div>
         </div>
       </form>
-      <List/>
+      <List />
     </div>
   );
 };
