@@ -2,7 +2,9 @@ import React from "react";
 function Transaction({category}) {
   if (!category) return null;
   return (
-    <div></div>
+    <div className="item flex justify-center bg-gray-50 py-2 rounded-r" style={{ borderRight : `8px solid ${category.color ??  "#e5e5e5"}`}}>
+      
+    </div>
   );
 }
 const List = () => {
