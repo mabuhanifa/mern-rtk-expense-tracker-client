@@ -1,10 +1,16 @@
 import React from "react";
-function Transaction({category}) {
+import { VscTrash } from "react-icons/vsc";
+function Transaction({ category }) {
   if (!category) return null;
   return (
     <div className="item flex justify-center bg-gray-50 py-2 rounded-r" style={{ borderRight : `8px solid ${category.color ??  "#e5e5e5"}`}}>
-      
-    </div>
+            <button className='px-3'>
+              <span className='text-red-500 text-2xl'>
+              <VscTrash/>
+              </span>
+              </button>            
+            <span className='block w-full'>{category.name ?? ''}</span>
+        </div>
   );
 }
 const List = () => {
@@ -25,6 +31,9 @@ const List = () => {
   return (
     <div className="flex flex-col py-6 gap-3">
       <h1 className="py-4 font-bold text-xl">History</h1>
+      {obj.map((v, i) => (
+        <Transaction key={i} category={v}></Transaction>
+      ))}
     </div>
   );
 };
