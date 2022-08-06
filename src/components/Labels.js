@@ -1,4 +1,5 @@
 import React from "react";
+import apiSlice from "../store/apiSlice";
 const obj = [
   {
     type: "Savings",
@@ -31,6 +32,9 @@ function LabelComponent({ data }) {
   );
 }
 const Labels = () => {
+  const { data, isFetching , isSuccess, isError } = apiSlice.useGetLabelsQuery()
+  let Transactions;
+   console.log(data)
   return (
     <>
       {obj.map((v, i) => (
