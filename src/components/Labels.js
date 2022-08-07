@@ -1,4 +1,5 @@
 import React from "react";
+import { getLabels } from "../helper/helper";
 import apiSlice from "../store/apiSlice";
 
 function LabelComponent({ data }) {
@@ -23,9 +24,7 @@ const Labels = () => {
   if (isFetching) {
     Transactions = <div>Fetching</div>;
   } else if (isSuccess) {
-    Transactions = data.map((v, i) => (
-      <LabelComponent key={i} data={v}></LabelComponent>
-    ));
+    Transactions = getLabels(data, 'type').map((v, i) => <LabelComponent key={i} data={v}></LabelComponent>);
   } else if (isError) {
     Transactions = <div>Error</div>;
   }
