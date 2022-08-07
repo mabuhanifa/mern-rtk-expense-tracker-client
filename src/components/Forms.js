@@ -25,7 +25,7 @@ const Forms = () => {
               className="form-input"
             />
           </div>
-          <select className="form-input">
+          <select className="form-input" {...register("type")}>
             <option value="Investment" defaultValue>
               Investment
             </option>
