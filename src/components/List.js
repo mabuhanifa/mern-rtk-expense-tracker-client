@@ -30,16 +30,16 @@ export default function List() {
   );
 }
 
-function Transaction({ category }) {
+function Transaction({ category, handler }) {
   if (!category) return null;
   return (
     <div
       className="item flex justify-center bg-gray-50 py-2 rounded-r"
       style={{ borderRight: `8px solid ${category.color ?? "#e5e5e5"}` }}
     >
-      <button className="px-3">
+      <button className="px-3" onClick={handler}>
         <span className="text-red-500 text-2xl">
-          <VscTrash />
+          <VscTrash data-id={category._id ?? ""} />
         </span>
       </button>
       <span className="block w-full">{category.name ?? ""}</span>
